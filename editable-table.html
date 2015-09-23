@@ -1,0 +1,41 @@
+
+<head>
+  <title>editable-table</title>
+</head>
+
+<body>
+	<div class='container' style='width: 420px;'>
+		<h3 class='text-center'>editable-table</h3>
+		<h6 class='text-center'>edit any cell below</h6>
+		{{> tableTemplate}}
+	</div>	
+</body>
+
+
+<template name='tableTemplate'>
+	<table class="table bootstrapRowMargin table-bordered table-striped table-condensed table-highlight table-scrollable">
+
+		<thead>
+			<tr>
+				{{#each tableColumnNames}}
+					<td><div class="text-center">{{this}}</div></td>
+				{{/each}}
+			</tr>
+		</thead>
+		<tbody>
+			{{#each tableRowData}}
+				<tr>
+					{{#each tableColumnData}}
+						<td>
+							{{> tableDivTemplate this}}
+						</td>
+					{{/each}}
+				</tr>
+			{{/each}}
+		</tbody>	
+	</table>
+</template>
+
+<template name='tableDivTemplate'>
+	<div id={{tableFieldId}} contenteditable="true" class="contentField text-right"></div>
+</template>
